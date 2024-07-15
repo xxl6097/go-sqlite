@@ -33,7 +33,7 @@ func InitMysql(dbfile string) *gorm.DB {
 		Logger:                                   logger, // 自定义Logger
 	})
 	if err != nil {
-		log.Fatal("initMysql gorm.Open err:", err)
+		log.Fatal("init gorm err", dbfile, err)
 	}
 	db.InstanceSet("gorm:table_options", "ENGINE=InnoDB")
 	sqlDB, err := db.DB()
