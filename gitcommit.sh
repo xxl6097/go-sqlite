@@ -63,7 +63,7 @@ function gitpush() {
   git commit -m "$commit"
   #  git push -u origin main
   git push
-  #stag
+  stag
 }
 
 function test() {
