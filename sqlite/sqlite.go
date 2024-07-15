@@ -1,6 +1,7 @@
 package sqlite
 
 import (
+	"fmt"
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
@@ -23,6 +24,7 @@ func InitMysql(dbfile string) *gorm.DB {
 		},
 	)
 
+	fmt.Println(dbfile)
 	// 初始化会话
 	db, err := gorm.Open(sqlite.Open(dbfile), &gorm.Config{
 		SkipDefaultTransaction: true, // 禁用默认事务
@@ -33,7 +35,7 @@ func InitMysql(dbfile string) *gorm.DB {
 		Logger:                                   logger, // 自定义Logger
 	})
 	if err != nil {
-		log.Fatal("init gorm err", dbfile, err)
+		log.Fatal("init gorm err", err)
 	}
 	db.InstanceSet("gorm:table_options", "ENGINE=InnoDB")
 	sqlDB, err := db.DB()
