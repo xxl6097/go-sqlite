@@ -1,4 +1,4 @@
-module go-sqlite
+module github.com/xxl6097/go-sqlite
 
 go 1.22
 

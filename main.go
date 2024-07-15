@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"go-sqlite/model"
-	"go-sqlite/sqlite"
+	"github.com/xxl6097/go-sqlite/model"
+	"github.com/xxl6097/go-sqlite/sqlite"
 )
 
 func main() {
