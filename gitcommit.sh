@@ -36,8 +36,8 @@ function pull() {
 
 function forcepull() {
   todir
-  echo "git fetch --all && git reset --hard origin/master && git pull"
-  git fetch --all && git reset --hard origin/master && git pull
+  echo "git fetch --all && git reset --hard origin/main && git pull"
+  git fetch --all && git reset --hard origin/main && git pull
 }
 
 function tag() {
@@ -63,7 +63,7 @@ function gitpush() {
   git commit -m "$commit"
   #  git push -u origin main
   git push
-  stag
+  tag
 }
 
 function test() {
