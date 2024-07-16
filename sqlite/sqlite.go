@@ -2,8 +2,8 @@ package sqlite
 
 import (
 	"fmt"
+	"github.com/glebarez/sqlite"
 	"github.com/xxl6097/go-sqlite/sqlite/logg"
-	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 	"gorm.io/gorm/schema"
 	"log"
