@@ -2,27 +2,26 @@ package sqlite
 
 import (
 	"fmt"
+	"github.com/xxl6097/go-sqlite/sqlite/logg"
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
-	"gorm.io/gorm/logger"
 	"gorm.io/gorm/schema"
 	"log"
-	"os"
 	"time"
 )
 
 // InitMysql 初始化mysql会话
 func InitMysql(dbfile string) *gorm.DB {
 	// 日志配置
-	logger := logger.New(
-		log.New(os.Stdout, "\r\n", log.LstdFlags), // io writer（日志输出的目标，前缀和日志包含的内容——译者注）
-		logger.Config{
-			SlowThreshold:             time.Second,   // 慢 SQL 阈值
-			LogLevel:                  logger.Silent, // 日志级别
-			IgnoreRecordNotFoundError: true,          // 忽略ErrRecordNotFound（记录未找到）错误
-			Colorful:                  true,          // 彩色打印
-		},
-	)
+	//logger := logger.New(
+	//	log.New(os.Stdout, "\r\n", log.LstdFlags), // io writer（日志输出的目标，前缀和日志包含的内容——译者注）
+	//	logger.Config{
+	//		SlowThreshold:             time.Second,   // 慢 SQL 阈值
+	//		LogLevel:                  logger.Silent, // 日志级别
+	//		IgnoreRecordNotFoundError: true,          // 忽略ErrRecordNotFound（记录未找到）错误
+	//		Colorful:                  true,          // 彩色打印
+	//	},
+	//)
 
 	fmt.Println(dbfile)
 	// 初始化会话
@@ -31,8 +30,9 @@ func InitMysql(dbfile string) *gorm.DB {
 		NamingStrategy: schema.NamingStrategy{
 			SingularTable: true, // 使用单一表名, eg. `User` => `user`
 		},
-		DisableForeignKeyConstraintWhenMigrating: true,   // 禁用自动创建外键约束
-		Logger:                                   logger, // 自定义Logger
+		DisableForeignKeyConstraintWhenMigrating: true, // 禁用自动创建外键约束
+		//Logger:                                   logger, // 自定义Logger
+		Logger: &logg.Log{}, // 自定义Logger
 	})
 	if err != nil {
 		log.Fatal("init gorm err", err)
